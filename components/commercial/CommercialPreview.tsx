@@ -1,112 +1,119 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { Hotel, Hospital, Factory, Building, ArrowRight, CheckCircle2 } from "lucide-react";
+import CommercialCard, { CommercialSystem } from "./CommercialCard";
 
-const segments = [
-  { icon: Hotel, label: "Hotels", desc: "High-volume purification for F&B and guest supply" },
-  { icon: Hospital, label: "Hospitals", desc: "Ultra-pure water for clinical and sterile applications" },
-  { icon: Factory, label: "Factories", desc: "Industrial RO for process water and cooling systems" },
-  { icon: Building, label: "Offices", desc: "Compact commercial systems for staff and clients" },
-];
-
-const highlights = [
-  "High-capacity output — 100 to 2000+ LPH",
-  "Corrosion-resistant stainless steel builds",
-  "Priority AMC & emergency maintenance",
-  "Custom installation and system design",
-  "Certified for commercial compliance",
+const systems: CommercialSystem[] = [
+  {
+    id: "25-lph",
+    capacity: "25 LPH",
+    capacityNote: "Entry Commercial",
+    automationType: "Manual",
+    suitableIndustries: ["Offices", "Clinics", "Restaurants", "Schools"],
+    features: [
+      "Multi-stage RO purification",
+      "Auto shut-off & flush valve",
+      "TDS controller included",
+      "Compact footprint design",
+      "Standard pressure pump",
+    ],
+    installationSupport: "On-Site",
+    maintenanceSupport: "AMC available — quarterly service visits included",
+    gradient: "from-slate-600 to-slate-500",
+    badge: "Compact",
+    badgeColor: "bg-slate-200 text-slate-800",
+    href: "/commercial#quote",
+  },
+  {
+    id: "250-lph",
+    capacity: "250 LPH",
+    capacityNote: "Mid-Capacity",
+    automationType: "Semi-Automatic",
+    suitableIndustries: ["Hotels", "Hospitals", "Factories", "Institutions"],
+    features: [
+      "High-flow membrane array",
+      "Auto backwash system",
+      "Digital TDS monitoring",
+      "Stainless steel housing",
+      "Priority AMC support plan",
+    ],
+    installationSupport: "On-Site",
+    maintenanceSupport: "Priority AMC — bi-monthly inspections and emergency support",
+    gradient: "from-blue-700 to-cyan-600",
+    badge: "Most Ordered",
+    badgeColor: "bg-cyan-100 text-cyan-800",
+    href: "/commercial#quote",
+  },
+  {
+    id: "500-lph",
+    capacity: "500 LPH",
+    capacityNote: "High Capacity",
+    automationType: "PLC Automated",
+    suitableIndustries: ["Large Hotels", "Hospitals", "Industrial Plants", "Institutions"],
+    features: [
+      "PLC-controlled automation",
+      "Multi-membrane pressure vessel",
+      "Real-time TDS & flow monitoring",
+      "CIP (Clean-in-Place) system",
+      "Dedicated service account manager",
+    ],
+    installationSupport: "Turnkey On-Site",
+    maintenanceSupport: "Premium AMC — monthly scheduled service with 24hr emergency response",
+    gradient: "from-slate-800 to-blue-900",
+    badge: "Enterprise",
+    badgeColor: "bg-blue-100 text-blue-800",
+    href: "/commercial#quote",
+  },
 ];
 
 export default function CommercialPreview() {
   return (
-    <section className="py-24 bg-slate-900 text-white overflow-hidden">
+    <section className="py-24 bg-slate-950">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* LEFT: Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="flex flex-col gap-8"
-          >
-            <div>
-              <span className="inline-block text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-3">
-                Commercial Division
-              </span>
-              <h2 className="text-4xl lg:text-5xl font-bold leading-tight text-white tracking-tight">
-                Industrial-Grade Water Solutions for Business
-              </h2>
-              <p className="mt-5 text-slate-400 text-lg leading-relaxed">
-                Kriv H2O delivers robust, high-capacity RO systems engineered for demanding commercial environments — where reliability, volume, and compliance are non-negotiable.
-              </p>
-            </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14 max-w-2xl mx-auto"
+        >
+          <span className="inline-block text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-3">
+            System Range
+          </span>
+          <h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight">
+            Commercial RO Plant Systems
+          </h2>
+          <p className="mt-4 text-slate-400 text-lg leading-relaxed">
+            Scalable capacity options engineered for the real operational demands of every business type.
+          </p>
+        </motion.div>
 
-            {/* Highlights */}
-            <ul className="flex flex-col gap-3">
-              {highlights.map((h) => (
-                <li key={h} className="flex items-start gap-3 text-slate-300 text-sm">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                  {h}
-                </li>
-              ))}
-            </ul>
-
-            {/* CTA */}
-            <div className="flex flex-wrap gap-4 pt-2">
-              <Link
-                href="/commercial"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold text-sm transition-colors duration-200"
-              >
-                View Commercial Range
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              
-              <a
-                href="https://wa.me/7096920059?text=I need a commercial RO solution"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-slate-600 hover:border-slate-400 text-white font-semibold text-sm transition-colors duration-200"
-              >
-                Request a Quote
-              </a>
-            </div>
-          </motion.div>
-
-          {/* RIGHT: Segment cards */}
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="grid grid-cols-2 gap-4"
-          >
-            {segments.map((seg, i) => {
-              const Icon = seg.icon;
-              return (
-                <motion.div
-                  key={seg.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="p-6 rounded-2xl bg-slate-800 border border-slate-700 hover:border-cyan-700 transition-all duration-300 flex flex-col gap-4"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-slate-700 flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-cyan-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-bold text-base mb-1">{seg.label}</h4>
-                    <p className="text-slate-400 text-xs leading-relaxed">{seg.desc}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          {systems.map((system, i) => (
+            <CommercialCard key={system.id} system={system} index={i} />
+          ))}
         </div>
+
+        {/* Custom capacity note */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-12 text-center p-6 rounded-2xl border border-white/8 bg-white/3"
+        >
+          <p className="text-slate-400 text-sm">
+            Need a custom capacity above 500 LPH?{" "}
+            <a
+              href="https://wa.me/919999999999?text=I need a custom capacity commercial RO plant above 500 LPH"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cyan-400 font-semibold hover:text-cyan-300 transition-colors"
+            >
+              Contact our commercial team →
+            </a>
+          </p>
+        </motion.div>
       </div>
     </section>
   );
