@@ -3,9 +3,6 @@ import FilterBar from "@/components/residential/FilterBar";
 import ProductGrid from "@/components/residential/ProductGrid";
 import ProductComparison from "@/components/residential/ProductComparison";
 import ResidentialCTA from "@/components/residential/ResidentialCTA";
-
-// Residential FAQs — passed into your existing FAQAccordion component.
-// Replace the import path below with the actual path to your FAQAccordion.
 import FAQAccordion from "@/components/shared/FAQAccordion";
 
 const residentialFaqs = [
