@@ -1,3 +1,4 @@
+import { generatePageMetadata } from "@/lib/metadata";
 import ContactHero from "@/components/contact/ContactHero";
 import ContactForm from "@/components/contact/ContactForm";
 import BranchCard, { Branch } from "@/components/contact/BranchCard";
@@ -5,11 +6,12 @@ import GoogleMap from "@/components/contact/GoogleMap";
 import BusinessHours from "@/components/contact/BusinessHours";
 import PaymentMethods from "@/components/contact/PaymentMethods";
 
-export const metadata = {
+// Generate metadata with custom overrides for the contact page
+export const metadata = generatePageMetadata("contact", {
   title: "Contact Us — Kriv H2O Private Limited",
   description:
     "Get in touch with Kriv H2O for product consultation, installation support, AMC services, and commercial RO inquiries. Serving all areas of Vadodara.",
-};
+});
 
 const branches: Branch[] = [
   {

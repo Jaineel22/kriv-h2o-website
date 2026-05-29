@@ -1,3 +1,7 @@
+import { generatePageMetadata } from "@/lib/metadata";
+
+export const metadata = generatePageMetadata("residential");
+
 import ResidentialHero from "@/components/residential/ResidentialHero";
 import FilterBar from "@/components/residential/FilterBar";
 import ProductGrid from "@/components/residential/ProductGrid";

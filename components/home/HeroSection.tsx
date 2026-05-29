@@ -2,6 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Star, MapPin, Zap, Shield } from "lucide-react";
 
 const fadeUp: Variants = {
@@ -131,12 +132,20 @@ export default function HeroSection() {
           <div className="relative w-full max-w-md">
             {/* Main visual card */}
             <div className="relative rounded-3xl bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-400 p-1 shadow-2xl shadow-blue-200">
-              <div className="rounded-[22px] bg-white/10 backdrop-blur-sm p-10 flex flex-col items-center gap-6">
-                {/* Water drop icon */}
-                <div className="w-28 h-28 rounded-full bg-white/20 flex items-center justify-center">
-                  <svg className="w-16 h-16 text-white drop-shadow" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
-                  </svg>
+              <div className="rounded-[22px] bg-white/10 backdrop-blur-sm p-6 flex flex-col items-center gap-6">
+                {/* Brand Logo Image */}
+                <div className="relative w-40 h-40 rounded-full bg-white/20 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/kriv_logo.jpg"
+                    alt="Kriv H2O Logo"
+                    width={160}
+                    height={160}
+                    priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-contain w-full h-full"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAAUABQDASIAAhEBAxEB/8QAGgAAAwEBAQEAAAAAAAAAAAAAAwQFBgcCAP/EACQQAAEDBAEDBQAAAAAAAAAAAAECAwQABRESBhMhUTJBYXGR/8QAGAEAAgMAAAAAAAAAAAAAAAAAAgMAAQT/xAAYEQADAQEAAAAAAAAAAAAAAAAAAQIDEv/aAAwDAQACEQMRAD8A2aPHjR2hHijpNj1DOe/zTQaJ86ohSFjYJSn27YIpyMvENn1e2nYh2/eMgCs9veQs2sFBSUuOCtReXlUgwqptFq4za2tUNhRIKj91VjWaOzM6iwpR+qnYMph1pGNUn86pmQuNGHpb5FYm3yYd6rFgw7T/YA//Z"
+                  />
                 </div>
                 <div className="text-center">
                   <p className="text-white/90 text-xl font-bold">KRIV H2O</p>

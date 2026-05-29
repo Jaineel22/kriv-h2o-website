@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
+import Image from "next/image";
 import { Wrench, Shield, Gauge, MapPin } from "lucide-react";
 
 const trust = [
@@ -129,9 +130,20 @@ export default function CommercialHero() {
         >
           <div className="relative w-full max-w-sm">
             <div className="rounded-3xl bg-gradient-to-br from-cyan-500/20 via-blue-500/10 to-slate-700/30 border border-white/10 p-1 shadow-2xl shadow-black/40">
-              <div className="rounded-[22px] bg-slate-800/80 backdrop-blur-sm p-10 flex flex-col items-center gap-6">
-                <div className="w-28 h-28 rounded-full bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center">
-                  <Gauge className="w-14 h-14 text-cyan-400" />
+              <div className="rounded-[22px] bg-slate-800/80 backdrop-blur-sm p-6 flex flex-col items-center gap-6">
+                {/* Brand Logo Image */}
+                <div className="relative w-28 h-28 rounded-full bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/kriv_logo.jpg"
+                    alt="Kriv H2O Logo"
+                    width={112}
+                    height={112}
+                    priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-contain w-full h-full"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAAUABQDASIAAhEBAxEB/8QAGgAAAwEBAQEAAAAAAAAAAAAAAwQFBgcCAP/EACQQAAEDBAEDBQAAAAAAAAAAAAECAwQABRESBhMhUTJBYXGR/8QAGAEAAgMAAAAAAAAAAAAAAAAAAgMAAQT/xAAYEQADAQEAAAAAAAAAAAAAAAAAAQIDEv/aAAwDAQACEQMRAD8A2aPHjR2hHijpNj1DOe/zTQaJ86ohSFjYJSn27YIpyMvENn1e2nYh2/eMgCs9veQs2sFBSUuOCtReXlUgwqptFq4za2tUNhRIKj91VjWaOzM6iwpR+qnYMph1pGNUn86pmQuNGHpb5FYm3yYd6rFgw7T/YA//Z"
+                  />
                 </div>
                 <div className="text-center">
                   <p className="text-white font-bold text-xl">Commercial Range</p>

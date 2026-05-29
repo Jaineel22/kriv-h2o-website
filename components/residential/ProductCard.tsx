@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import FeatureBadge from "./FeatureBadge";
 import { BadgeVariant } from "./FeatureBadge";
 
@@ -42,10 +43,18 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
     >
       {/* Visual header */}
       <div className={`relative h-44 bg-gradient-to-br ${product.gradient} flex items-center justify-center flex-shrink-0`}>
-        <div className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center">
-          <svg className="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8z" />
-          </svg>
+        <div className="relative w-20 h-20 rounded-full bg-white/20 flex items-center justify-center overflow-hidden">
+          <Image
+            src={`/images/products/${product.id}.webp`}
+            alt={product.name}
+            width={80}
+            height={80}
+            loading="lazy"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
+            className="object-contain w-full h-full"
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAAUABQDASIAAhEBAxEB/8QAGgAAAwEBAQEAAAAAAAAAAAAAAwQFBgcCAf/EACQQAAEDBAEDBQAAAAAAAAAAAAECAwQABREhBhITIjFBUXGR/8QAGAEAAgMAAAAAAAAAAAAAAAAAAgMAAQT/xAAYEQADAQEAAAAAAAAAAAAAAAAAAQIDEv/aAAwDAQACEQMRAD8Axa6cOR8xLzzjffS8lKSoDZeMfZomOkRZMO+TmKkzJGjAKRKyMhxLSVg/Qpx0ovnDLjDSj5rLWh/uPj9GpPJovdj2Z4eRKYLRT7lGEmuRrZ2noFbJrCJzKt7L/miJSB2HJfyr/2Q=="
+          />
         </div>
         {product.badge && (
           <span className={`absolute top-4 right-4 text-xs font-bold px-3 py-1.5 rounded-full ${product.badgeColor}`}>

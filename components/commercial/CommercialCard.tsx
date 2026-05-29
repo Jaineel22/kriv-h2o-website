@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 
 export interface CommercialSystem {
@@ -50,6 +51,7 @@ export default function CommercialCard({ system, index = 0 }: CommercialCardProp
             {system.badge}
           </span>
         )}
+        {/* Optional product image overlay – we keep decorative gradient, no image needed here */}
       </div>
 
       {/* Body */}

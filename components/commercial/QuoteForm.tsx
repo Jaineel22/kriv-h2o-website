@@ -44,8 +44,7 @@ const initial: FormState = {
   message: "",
 };
 
-// TODO: Replace ALL occurrences of 919999999999 with your actual Kriv H2O WhatsApp number
-const WHATSAPP_NUMBER = "919999999999"; // ← Change this!
+const WHATSAPP_NUMBER = "919999999999"; // ← Replace with your actual number
 
 const inputBase =
   "w-full px-4 py-3.5 rounded-xl bg-slate-800 border border-white/10 text-slate-200 placeholder:text-slate-600 text-sm font-medium focus:outline-none focus:border-cyan-500/50 focus:bg-slate-800/80 transition-colors duration-200";
@@ -56,11 +55,13 @@ export default function QuoteForm() {
   const [form, setForm] = useState<FormState>(initial);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    if (errorMsg) setErrorMsg(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -68,6 +69,7 @@ export default function QuoteForm() {
     if (isSubmitting) return;
 
     setIsSubmitting(true);
+    setErrorMsg(null);
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -77,11 +79,12 @@ export default function QuoteForm() {
       if (response.ok) {
         setSubmitted(true);
       } else {
-        alert("Something went wrong. Please try again or WhatsApp us directly.");
+        const data = await response.json().catch(() => ({}));
+        setErrorMsg(data.message || "Failed to send. Please try again or WhatsApp us.");
       }
     } catch (error) {
       console.error("Submission error:", error);
-      alert("Failed to send. Please WhatsApp us directly.");
+      setErrorMsg("Network error. Please check your connection and try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -186,6 +189,16 @@ export default function QuoteForm() {
                 onSubmit={handleSubmit}
                 className="rounded-3xl bg-slate-800 border border-white/8 p-8 flex flex-col gap-6"
               >
+                {errorMsg && (
+                  <div
+                    role="alert"
+                    aria-live="polite"
+                    className="text-red-400 text-sm text-center bg-red-900/20 border border-red-500/30 p-3 rounded-xl"
+                  >
+                    {errorMsg}
+                  </div>
+                )}
+
                 {/* Row 1 */}
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>

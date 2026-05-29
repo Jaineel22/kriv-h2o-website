@@ -1,3 +1,8 @@
+import { generatePageMetadata } from "@/lib/metadata";
+
+export const metadata = generatePageMetadata("home");
+
+
 import HeroSection from "@/components/home/HeroSection";
 import StatsStrip from "@/components/home/StatsStrip";
 import WhyKriv from "@/components/home/WhyKriv";

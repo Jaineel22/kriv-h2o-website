@@ -169,7 +169,11 @@ export default function ContactForm() {
                 className="rounded-3xl bg-white border border-slate-100 shadow-sm p-8 flex flex-col gap-6"
               >
                 {errorMsg && (
-                  <div className="text-red-600 text-sm text-center bg-red-50 p-3 rounded-xl">
+                  <div
+                    role="alert"
+                    aria-live="polite"
+                    className="text-red-600 text-sm text-center bg-red-50 p-3 rounded-xl"
+                  >
                     {errorMsg}
                   </div>
                 )}
