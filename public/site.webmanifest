@@ -1,0 +1,8 @@
+{
+  "name": "Kriv H2O",
+  "short_name": "Kriv H2O",
+  "icons": [],
+  "theme_color": "#2563eb",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import FeatureBadge from "./FeatureBadge";
 import { BadgeVariant } from "./FeatureBadge";
 
@@ -41,20 +40,13 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
       className="group rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl overflow-hidden transition-shadow duration-300 flex flex-col"
     >
-      {/* Visual header */}
+      {/* Visual header – only gradient, no image */}
       <div className={`relative h-44 bg-gradient-to-br ${product.gradient} flex items-center justify-center flex-shrink-0`}>
-        <div className="relative w-20 h-20 rounded-full bg-white/20 flex items-center justify-center overflow-hidden">
-          <Image
-            src={`/images/products/${product.id}.webp`}
-            alt={product.name}
-            width={80}
-            height={80}
-            loading="lazy"
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
-            className="object-contain w-full h-full"
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAAUABQDASIAAhEBAxEB/8QAGgAAAwEBAQEAAAAAAAAAAAAAAwQFBgcCAf/EACQQAAEDBAEDBQAAAAAAAAAAAAECAwQABREhBhITIjFBUXGR/8QAGAEAAgMAAAAAAAAAAAAAAAAAAgMAAQT/xAAYEQADAQEAAAAAAAAAAAAAAAAAAQIDEv/aAAwDAQACEQMRAD8Axa6cOR8xLzzjffS8lKSoDZeMfZomOkRZMO+TmKkzJGjAKRKyMhxLSVg/Qpx0ovnDLjDSj5rLWh/uPj9GpPJovdj2Z4eRKYLRT7lGEmuRrZ2noFbJrCJzKt7L/miJSB2HJfyr/2Q=="
-          />
+        {/* Placeholder icon (water drop) instead of product image */}
+        <div className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center">
+          <svg className="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8z" />
+          </svg>
         </div>
         {product.badge && (
           <span className={`absolute top-4 right-4 text-xs font-bold px-3 py-1.5 rounded-full ${product.badgeColor}`}>
@@ -63,9 +55,8 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
         )}
       </div>
 
-      {/* Content */}
+      {/* Content (unchanged) */}
       <div className="p-7 flex flex-col gap-5 flex-1">
-        {/* Name & price */}
         <div>
           <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-1">
             {product.tagline}
@@ -79,10 +70,8 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           </div>
         </div>
 
-        {/* Description */}
         <p className="text-slate-500 text-sm leading-relaxed">{product.description}</p>
 
-        {/* Tech badges */}
         <div className="flex flex-wrap gap-1.5">
           {product.technologies.map((tech) => (
             <FeatureBadge
@@ -93,7 +82,6 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           ))}
         </div>
 
-        {/* Specs */}
         <div className="grid grid-cols-2 gap-3 py-3 border-y border-slate-50">
           <div>
             <p className="text-xs text-slate-400 font-medium mb-0.5">Storage</p>
@@ -105,7 +93,6 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           </div>
         </div>
 
-        {/* Features list */}
         <ul className="flex flex-col gap-1.5">
           {product.features.map((f) => (
             <li key={f} className="flex items-start gap-2 text-sm text-slate-600">
@@ -115,7 +102,6 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           ))}
         </ul>
 
-        {/* CTAs */}
         <div className="flex flex-col gap-3 mt-auto pt-2">
           <a
             href={product.href}
@@ -123,7 +109,6 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           >
             View Details
           </a>
-          
           <a
             href={`https://wa.me/919999999999?text=${waMessage}`}
             target="_blank"
